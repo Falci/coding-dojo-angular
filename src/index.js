@@ -1,1 +1,1 @@
-console.log('index.js');
+angular.module('app', ['app.core']);

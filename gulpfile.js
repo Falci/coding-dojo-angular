@@ -1,5 +1,7 @@
 var gulp = require('gulp'),
-  load = require('express-load');
+  load = require('express-load'),
+  dest = 'dest',
+  src = 'src';
 
 var config = {
 
@@ -8,7 +10,7 @@ var config = {
     bower: 'bower_components/**',
     dest: dest.concat('/**'),
     html: dest.concat('/index.html'),
-    jade: src.concat('/index.jade'),
+    jade: [src.concat('/index.jade'), src.concat('/**/*.jade')],
     js: [src + '/**/*.js', '!**/*-spec.js'],
     less: src.concat('/style/**.less'),
     resources: [dest.concat('/css/**'), dest.concat('/js/**')],
@@ -51,8 +53,12 @@ var config = {
     livereload: true,
     port: 8000,
     open: true
-  }
+  },
 
+  karma: {
+    configFile: __dirname + '/karma.conf.js',
+    action: 'watch'
+  }
 };
 
-load('tasks', {verbose: true}).into(config);
+load('tasks').into(config);
