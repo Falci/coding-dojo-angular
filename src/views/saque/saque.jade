@@ -1,6 +1,7 @@
 h2 Valor
-input(type="number", ng-model="vm.valor")
+input(type="number" step="10", ng-model="vm.valor")
 br 
 h2 Notas
 ul
-  li(ng-repeat="nota in vm.notas") {{nota}}
+  li(ng-repeat="nota in vm.notas") {{nota.valor}}
+.text-danger(ng-hide="vm.notas") Valor invalido
