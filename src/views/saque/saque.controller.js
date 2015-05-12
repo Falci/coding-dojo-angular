@@ -8,7 +8,9 @@ function SaqueCtrl ($scope, Saque) {
   vm.valor = 100;
 
   $scope.$watch('vm.valor', function (novo, antigo) {
-    vm.notas = Saque.calcular(novo);    
+    vm.notas = Saque.calcular(parseInt(novo)).map(function(nota){
+      return {valor: nota};
+    });    
   });
 }
 
